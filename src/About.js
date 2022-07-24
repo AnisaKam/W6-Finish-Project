@@ -3,14 +3,17 @@ import { dataTwo } from "./dataTwo";
 
 function About() {
 
-    const [photos, setPhotos] = useState(0);
-    const {image} = dataTwo[photos];
+    const [photos, setPhotos] = useState (["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"]);
+
+    console.log(photos[7]);
+
+    let i = 0;
 
     const next = () => {
         setPhotos((photos => {
             photos--;
             if (photos < 0) {
-                return dataTwo.length - 1
+                return photos.length - 1
             }
             return photos;
         }))
@@ -19,7 +22,7 @@ function About() {
     const back = () => {
         setPhotos((photos => {
             photos ++;
-            if (photos > dataTwo.length - 1) {
+            if (photos > photos.length - 1) {
                 photos = 0;
             }
             return photos;
@@ -33,19 +36,15 @@ function About() {
             We will always come to your aid, and our fashion designers will select clothes that will suit you. With you since 1975.
             </p>
 
-    <div className="slider">
-            <div className="sliderStyle">
-                <img src={image} width='300px' alt='clothes'/>
-            </div>
-    
-
             <div id="container">
-                <button id="back" class="btn" onClick = {back}>Back</button>
-                <img id="pictures" src="1.jpeg" alt="clothes"> </img>
-                <button id="next"  class="btn" onClick = {next}>Next</button>
+                <button id="back" className="btn" onClick = {back}>Back</button>
+                <img id="photos" src="1.jpg" alt="clothes"/> 
+                <button id="next"  className="btn" onClick = {next}>Next</button>
             </div>
 
-    </div>
+
+
+    
 </div>
 ) 
 }
